@@ -1,0 +1,7 @@
+$ distrobox rm --force alpinebox
+Removing container...
+alpinebox
+Removing exported binaries...
+exit: 0
+$ distrobox list
+ID           | NAME                 | STATUS             | IMAGE

@@ -1,0 +1,15 @@
+$ docker pull docker.io/library/alpine:3.20
+3.20: Pulling from library/alpine
+25f1d6b1951a: Pulling fs layer
+25f1d6b1951a: Verifying Checksum
+25f1d6b1951a: Download complete
+25f1d6b1951a: Pull complete
+Digest: sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc
+Status: Downloaded newer image for alpine:3.20
+docker.io/library/alpine:3.20
+$ docker run --rm docker.io/library/alpine:3.20 cat /etc/os-release
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error spawning mount remapping thread: mount source thread: join container mntns: setns: operation not permitted: unknown
+
+Run 'docker run --help' for more information
+exit: 125

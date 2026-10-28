@@ -1,0 +1,8 @@
+$ distrobox list
+ID           | NAME                 | STATUS             | IMAGE                         
+9cb8783d6700 | alpinebox            | Created            | docker.io/library/alpine:3.20 
+
+$ distrobox enter alpinebox -- cat /etc/os-release
+Error response from daemon: failed to create default sandbox: failed to create a netlink handle: failed to set into network namespace 25 while creating netlink socket: operation not permitted
+Error: failed to start containers: alpinebox
+exit: 1

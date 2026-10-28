@@ -1,0 +1,19 @@
+$ distrobox-assemble --help
+distrobox version: 1.8.2.5
+
+Usage:
+
+	distrobox assemble create
+	distrobox assemble rm
+	distrobox assemble create --file /path/to/file.ini
+	distrobox assemble rm --file /path/to/file.ini
+	distrobox assemble create --replace --file /path/to/file.ini
+
+Options:
+
+	--file:			path or URL to the distrobox manifest/ini file
+	--name/-n:		run against a single entry in the manifest/ini file
+	--replace/-R:		replace already existing distroboxes with matching names
+	--dry-run/-d:		only print the container manager command generated
+	--verbose/-v:		show more verbosity
+	--version/-V:		show version

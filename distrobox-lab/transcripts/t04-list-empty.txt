@@ -1,0 +1,5 @@
+$ docker --version
+Docker version 28.3.3, build 980b856
+$ distrobox list
+ID           | NAME                 | STATUS             | IMAGE                         
+exit: 0

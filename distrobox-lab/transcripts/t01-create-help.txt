@@ -1,0 +1,64 @@
+$ distrobox-create --help
+distrobox version: 1.8.2.5
+
+Usage:
+
+	distrobox create --image alpine:latest --name test --init-hooks "touch /var/tmp/test1 && touch /var/tmp/test2"
+	distrobox create --image fedora:39 --name test --additional-flags "--env MY_VAR-value"
+	distrobox create --image fedora:39 --name test --volume /opt/my-dir:/usr/local/my-dir:rw --additional-flags "--pids-limit 100"
+	distrobox create -i docker.io/almalinux/8-init --init --name test --pre-init-hooks "dnf config-manager --enable powertools && dnf -y install epel-release"
+	distrobox create --clone fedora-39 --name fedora-39-copy
+	distrobox create --image alpine my-alpine-container
+	distrobox create --image registry.fedoraproject.org/fedora-toolbox:latest --name fedora-toolbox-latest
+	distrobox create --pull --image centos:stream9 --home ~/distrobox/centos9
+	distrobox create --image alpine:latest --name test2 --additional-packages "git tmux vim"
+	distrobox create --image ubuntu:22.04 --name ubuntu-nvidia --nvidia
+
+	DBX_NON_INTERACTIVE=1 DBX_CONTAINER_NAME=test-alpine DBX_CONTAINER_IMAGE=alpine distrobox-create
+
+Options:
+
+	--image/-i:		image to use for the container	default: registry.fedoraproject.org/fedora-toolbox:latest
+	--name/-n:		name for the distrobox          default: my-distrobox
+	--hostname:		hostname for the distrobox      default: htch-runtime
+	--pull/-p:		pull the image even if it exists locally (implies --yes)
+	--yes/-Y:		non-interactive, pull images without asking
+	--root/-r:		launch podman/docker/lilipod with root privileges. This is the only supported way to run with root
+				privileges. Do not use "sudo distrobox". If you need to specify a different program (e.g. 'doas') for root privileges,
+				use the DBX_SUDO_PROGRAM environment variable or the 'distrobox_sudo_program' config variable.
+	--clone/-c:		name of the distrobox container to use as base for a new container
+				this will be useful to either rename an existing distrobox or have multiple copies
+				of the same environment.
+	--home/-H:		select a custom HOME directory for the container. Useful to avoid host's home littering with temp files.
+	--volume:		additional volumes to add to the container
+	--additional-flags/-a:	additional flags to pass to the container manager command
+	--additional-packages/-ap:	additional packages to install during initial container setup
+	--init-hooks:		additional commands to execute at the end of container initialization
+	--pre-init-hooks:	additional commands to execute at the start of container initialization
+	--init/-I:		use init system (like systemd) inside the container.
+				this will make host's processes not visible from within the container. (assumes --unshare-process)
+				may require additional packages depending on the container image: https://github.com/89luca89/distrobox/blob/main/docs/useful_tips.md#using-init-system-inside-a-distrobox
+	--nvidia:		try to integrate host's nVidia drivers in the guest
+	--platform:		specify which platform to use, eg: linux/arm64
+	--unshare-devsys:          do not share host devices and sysfs dirs from host
+	--unshare-groups:          do not forward user's additional groups into the container
+	--unshare-ipc:          do not share ipc namespace with host
+	--unshare-netns:        do not share the net namespace with host
+	--unshare-process:          do not share process namespace with host
+	--unshare-all:          activate all the unshare flags below
+	--compatibility/-C:	show list of compatible images
+	--help/-h:		show this message
+	--no-entry:		do not generate a container entry in the application list
+	--dry-run/-d:		only print the container manager command generated
+	--verbose/-v:		show more verbosity
+	--version/-V:		show version
+
+	--absolutely-disable-root-password-i-am-really-positively-sure: ⚠️ ⚠️  when setting up a rootful distrobox, this will skip user password setup, leaving it blank. ⚠️ ⚠️
+
+Compatibility:
+
+	for a list of compatible images and container managers, please consult the man page:
+		man distrobox-compatibility
+	or run
+		distrobox create --compatibility
+	or consult the documentation page on: https://github.com/89luca89/distrobox/blob/main/docs/compatibility.md

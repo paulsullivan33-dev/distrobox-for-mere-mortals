@@ -1,0 +1,8 @@
+$ distrobox create --name alpinebox --image docker.io/library/alpine:3.20
+Creating 'alpinebox' using image docker.io/library/alpine:3.20	 [ OK ]
+Distrobox 'alpinebox' successfully created.
+To enter, run:
+
+distrobox enter alpinebox
+
+exit: 0

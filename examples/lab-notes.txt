@@ -1,0 +1,52 @@
+Lab notes — Distrobox for Mere Mortals
+======================================
+
+Machine: a restricted sandbox (2 CPUs, 7.7 GB, Ubuntu 24.04,
+running as root). Everything below is spelled out in full in
+criteria.md; these are the working notes.
+
+Install route
+-------------
+No podman or docker was present. The apt package lists were
+locked by another process for the whole session, so the Ubuntu
+podman package could not be installed. Instead:
+
+- distrobox 1.8.2.5 came from the project's official GitHub
+  release tarball, installed with its own ./install script and
+  --prefix into a scratch folder.
+- Docker 28.3.3 came from Docker's official static binary
+  tarball. dockerd ran with its data root and socket in the
+  scratch folder, --storage-driver=vfs, bridge networking off.
+  First launch died on a missing docker-proxy path; setting
+  --userland-proxy-path to the bundled binary fixed it.
+
+What the sandbox refused
+------------------------
+Starting any container. docker run of the pulled Alpine image
+failed inside runc ("join container mntns: setns: operation not
+permitted"), and distrobox enter failed when the daemon tried
+to start the created box ("failed to set into network
+namespace ... operation not permitted"). Transcripts t06 and
+t08. Everything inside a box is documented-only in the guide
+for exactly this reason, and criteria.md says so.
+
+Things worth remembering
+------------------------
+- distrobox list with no manager is a clean, plain error and
+  exit 127 — a good first health check (t03).
+- The config file is real: pinning container_manager="podman"
+  on a Docker-only machine broke list until the file was
+  removed (t05). Check the pin before reinstalling anything.
+- create is cheap and does not start anything: the box existed
+  as a created container and listed as "Created" (t07, t08).
+  The start is folded into enter.
+- --dry-run is the best documentation in the tool: one command
+  prints every flag, mount and namespace a box gets (t11),
+  and assemble has the same switch per box (t12).
+- rm cleaned up after itself, exports included (t09).
+
+Cleanup
+-------
+Box removed with distrobox rm --force, image removed with
+docker rmi, daemon stopped. Verified afterwards: no
+containers, no images, no dockerd or containerd processes.

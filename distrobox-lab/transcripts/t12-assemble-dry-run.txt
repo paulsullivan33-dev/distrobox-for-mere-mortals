@@ -1,0 +1,28 @@
+$ cat distrobox.ini
+[writing]
+image=docker.io/library/debian:bookworm
+additional_packages="git tmux"
+init=false
+pull=false
+root=false
+start_now=false
+
+[small]
+image=docker.io/library/alpine:3.20
+init=false
+pull=false
+root=false
+start_now=false
+
+$ distrobox assemble create --dry-run
+ - Creating writing...
+--name "writing"
+--volume "/home/hatch/workspace/build-check/distrobox-scratch/prefix/bin/distrobox-init":/usr/bin/entrypoint:ro
+--entrypoint /usr/bin/entrypoint
+--name "root"
+ - Creating small...
+--name "small"
+--volume "/home/hatch/workspace/build-check/distrobox-scratch/prefix/bin/distrobox-init":/usr/bin/entrypoint:ro
+--entrypoint /usr/bin/entrypoint
+--name "root"
+(full output generates one docker create command per box)

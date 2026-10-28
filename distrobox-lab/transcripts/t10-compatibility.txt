@@ -1,0 +1,33 @@
+$ distrobox create --compatibility
+
+cgr.dev/chainguard/wolfi-base:latest
+container-registry.oracle.com/os/oraclelinux:10
+container-registry.oracle.com/os/oraclelinux:10-slim
+container-registry.oracle.com/os/oraclelinux:8
+container-registry.oracle.com/os/oraclelinux:8-slim
+container-registry.oracle.com/os/oraclelinux:9
+container-registry.oracle.com/os/oraclelinux:9-slim
+docker.io/blackarchlinux/blackarch:latest
+docker.io/chimeralinux/chimera:latest
+docker.io/debian/eol:bullseye
+docker.io/debian/eol:buster
+docker.io/debian/eol:wheezy
+docker.io/gentoo/stage3:latest
+docker.io/kalilinux/kali-rolling:latest
+docker.io/library/almalinux:8
+docker.io/library/almalinux:9
+docker.io/library/alpine:3.20
+docker.io/library/alpine:3.21
+docker.io/library/alpine:3.22
+docker.io/library/alpine:edge
+docker.io/library/alpine:latest
+docker.io/library/alt:p10
+docker.io/library/alt:p11
+docker.io/library/alt:sisyphus
+docker.io/library/archlinux:latest
+docker.io/library/debian:bookworm-backports
+docker.io/library/debian:stable-backports
+docker.io/library/debian:testing
+docker.io/library/debian:testing-backports
+docker.io/library/debian:unstable
+[... 92 more images; 122 in the full list ...]

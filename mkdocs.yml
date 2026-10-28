@@ -1,0 +1,28 @@
+site_name: Distrobox for Mere Mortals
+site_description: Use any Linux distribution inside your terminal. Creating boxes that share your home folder, running one distribution's software on another, exporting apps to your desktop, and knowing exactly where a box's walls are — because some of them are not where you would guess.
+site_url: https://paulsullivan33-dev.github.io/distrobox-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Distrobox Is: what-distrobox-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Distrobox: installing-distrobox.md
+  - Your First Box: your-first-box.md
+  - Creating Boxes on Purpose: creating-boxes-on-purpose.md
+  - Your Home in Every Box: your-home-in-every-box.md
+  - Software Inside the Box: software-inside-the-box.md
+  - Exporting Apps and Commands: exporting-apps-and-commands.md
+  - Many Boxes, Kept Tidy: many-boxes.md
+  - Assemble — Boxes from a File: assemble.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

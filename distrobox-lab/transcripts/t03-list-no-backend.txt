@@ -1,0 +1,8 @@
+$ distrobox list
+Missing dependency: we need a container manager.
+Please install one of podman,  docker or lilipod.
+You can follow the documentation on:
+	man distrobox-compatibility
+or:
+	https://github.com/89luca89/distrobox/blob/main/docs/compatibility.md
+exit: 127

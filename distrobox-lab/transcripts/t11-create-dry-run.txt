@@ -1,0 +1,48 @@
+$ distrobox create --name alpinebox --image docker.io/library/alpine:3.20 --dry-run
+ docker create 
+--hostname "htch-runtime"
+--name "alpinebox"
+--privileged
+--security-opt label=disable
+--security-opt apparmor=unconfined
+--pids-limit=-1
+--user root:root
+--ipc host
+--network host
+--pid host
+--label "manager=distrobox"
+--label "distrobox.unshare_groups=0"
+--env "SHELL=bash"
+--env "HOME=/home/hatch"
+--env "container= docker"
+--env "TERMINFO_DIRS=/usr/share/terminfo:/run/host/usr/share/terminfo"
+--env "CONTAINER_ID=alpinebox"
+--volume /tmp:/tmp:rslave
+--volume "/home/hatch/workspace/build-check/distrobox-scratch/prefix/bin/distrobox-init":/usr/bin/entrypoint:ro
+--volume "/home/hatch/workspace/build-check/distrobox-scratch/prefix/bin/distrobox-export":/usr/bin/distrobox-export:ro
+--volume "/home/hatch/workspace/build-check/distrobox-scratch/prefix/bin/distrobox-host-exec":/usr/bin/distrobox-host-exec:ro
+--volume "/home/hatch":"/home/hatch":rslave
+--volume /:/run/host/:rslave
+--volume /dev:/dev:rslave
+--volume /sys:/sys:rslave
+--volume /dev/pts
+--volume /dev/null:/dev/ptmx
+--volume /sys/fs/selinux
+--volume /var/log/journal
+--volume /etc/hosts:/etc/hosts:ro
+--volume /etc/resolv.conf:/etc/resolv.conf:ro
+--volume /etc/hostname:/etc/hostname:ro
+
+--entrypoint /usr/bin/entrypoint
+docker.io/library/alpine:3.20
+--verbose
+--name "root"
+--user 0
+--group 0
+--home "/home/hatch"
+--init "0"
+--nvidia "0"
+--pre-init-hooks ""
+--additional-packages ""
+-- ''
+exit: 0
